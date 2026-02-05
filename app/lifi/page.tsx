@@ -1,44 +1,24 @@
 import axios from "axios";
+import { TxFormData } from "../types/form";
 
-const getTxDetails = async () => {
-  const getQuote = async (
-    fromChain: number,
-    toChain: number,
-    fromToken: string,
-    toToken: string,
-    fromAmount: string,
-    fromAddress: string,
-  ) => {
-    const result = await axios.get("https://li.quest/v1/quote", {
-      params: {
-        fromChain,
-        toChain,
-        fromToken,
-        toToken,
-        fromAmount,
-        fromAddress,
-      },
-    });
-    return result.data;
-  };
+const getTxDetails = async (formData: TxFormData) => {
+  const { fromChain, toChain, fromToken, toToken, fromAmount } = formData;
 
-  const fromChain = 1;
-  const fromToken = "USDC";
-  const toChain = 10;
-  const toToken = "USDC";
-  const fromAmount = "1000000";
   const fromAddress = "0xB3d545a856cAF3d01e5f3A85371b59180668219B";
 
-  const quote = await getQuote(
-    fromChain,
-    toChain,
-    fromToken,
-    toToken,
-    fromAmount,
-    fromAddress,
-  );
+  const result = await axios.get("https://li.quest/v1/quote", {
+    params: {
+      fromChain: Number(fromChain),
+      toChain: Number(toChain),
+      fromToken,
+      toToken,
+      fromAmount,
+      fromAddress,
+    },
+  });
 
-  console.log(quote);
+  console.log(result.data);
+  return result.data;
 };
 
 export default getTxDetails;

@@ -1,26 +1,57 @@
-const FormDetails = () => {
+import { TxFormData } from "../types/form";
+
+type FormDetailsProps = {
+  formData: TxFormData;
+  setFormData: React.Dispatch<React.SetStateAction<TxFormData>>;
+};
+
+const FormDetails = ({ formData, setFormData }: FormDetailsProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-2">
-        <label htmlFor="">From chain:</label>
-        <input type="text" name="" id="" className="border-2" />
-      </div>
-      <div className="flex gap-2">
-        <label htmlFor="">To chain:</label>
-        <input type="text" name="" id="" className="border-2" />
-      </div>
-      <div className="flex gap-2">
-        <label htmlFor="">From token:</label>
-        <input type="text" name="" id="" className="border-2" />
-      </div>
-      <div className="flex gap-2">
-        <label htmlFor="">To token:</label>
-        <input type="text" name="" id="" className="border-2" />
-      </div>
-      <div className="flex gap-2">
-        <label htmlFor="">Amount:</label>
-        <input type="text" name="" id="" className="border-2" />
-      </div>
+      <input
+        name="fromChain"
+        value={formData.fromChain}
+        onChange={handleChange}
+        className="border-2"
+        placeholder="From Chain"
+      />
+      <input
+        name="toChain"
+        value={formData.toChain}
+        onChange={handleChange}
+        className="border-2"
+        placeholder="To Chain"
+      />
+      <input
+        name="fromToken"
+        value={formData.fromToken}
+        onChange={handleChange}
+        className="border-2"
+        placeholder="From Token"
+      />
+      <input
+        name="toToken"
+        value={formData.toToken}
+        onChange={handleChange}
+        className="border-2"
+        placeholder="To Token"
+      />
+      <input
+        name="fromAmount"
+        value={formData.fromAmount}
+        onChange={handleChange}
+        className="border-2"
+        placeholder="From Amount"
+      />
     </div>
   );
 };
