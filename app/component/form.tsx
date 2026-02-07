@@ -23,6 +23,7 @@ const FormDetails = ({ formData, setFormData }: FormDetailsProps) => {
         onChange={handleChange}
         className="border-2"
         placeholder="From Chain"
+        required
       />
       <input
         name="toChain"
@@ -30,6 +31,7 @@ const FormDetails = ({ formData, setFormData }: FormDetailsProps) => {
         onChange={handleChange}
         className="border-2"
         placeholder="To Chain"
+        required
       />
       <input
         name="fromToken"
@@ -37,6 +39,7 @@ const FormDetails = ({ formData, setFormData }: FormDetailsProps) => {
         onChange={handleChange}
         className="border-2"
         placeholder="From Token"
+        required
       />
       <input
         name="toToken"
@@ -44,6 +47,7 @@ const FormDetails = ({ formData, setFormData }: FormDetailsProps) => {
         onChange={handleChange}
         className="border-2"
         placeholder="To Token"
+        required
       />
       <input
         name="fromAmount"
@@ -51,6 +55,7 @@ const FormDetails = ({ formData, setFormData }: FormDetailsProps) => {
         onChange={handleChange}
         className="border-2"
         placeholder="From Amount"
+        required
       />
     </div>
   );
